@@ -1,0 +1,11 @@
+Need two windows for this
+
+#window1 
+
+Subscribe chat
+
+#windows 2
+Publish chat “hi”
+
+Publish chat “are you there?”
+

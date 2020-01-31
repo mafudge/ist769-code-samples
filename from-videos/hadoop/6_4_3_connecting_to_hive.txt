@@ -1,0 +1,15 @@
+$ hive
+
+hive> show databases;
+hive> use default;
+hive> show tables;
+hive> select os_family from web_logs limit 10;
+hive> quit
+
+$ beeline -u jdbc:hive2://localhost:10000/default -u cloudera -p cloudera –silent=true
+
+beeline> show databses;
+beeline> use default;
+beeline> show tables;
+beeline> select os_family from web_logs limit 10;
+beeline> !quit

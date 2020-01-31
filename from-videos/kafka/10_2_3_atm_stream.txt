@@ -1,0 +1,15 @@
+View schema of ATM again in the consumer
+
+KSQL> CREATE STREAM USERS (user varchar) with (kafka_topic='atm', value_format='json’);
+
+# Explain this statement!!!
+
+# RUN A PROGRAM USING THIS STREAM
+KSQL> select * from USERS;
+
+# Discuss what is seen in the output. But don’t explain it all at this time! 
+# This is a non-persistent query. Press CTRL + C to break
+
+KSQL> select * from USERS limit 3; 
+
+# You only get 3

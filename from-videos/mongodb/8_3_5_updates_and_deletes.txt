@@ -1,0 +1,21 @@
+# delete all the CRV’s
+Db.cars.remove( { “model” : “CRV” } )
+
+Db.cars.find()
+
+# update – partial does not work
+db.cars.update ({ "_id" : 1},  { "style" : "sedan" } )
+
+#where did it go?
+Db.cars.find()
+
+# full overwrite, so you must replace
+ db.cars.update ({ "_id" : 1},  { "make" : "Honda", "model" : "Civic", “style” : “sedan”, "_id" : 1 })
+
+# easier to do with full JavaScript code
+var cruze = db.cars.findOne( { "model" : "Cruze", "make" : "Chevy"} )
+cruze["style"] = "sedan“
+db.cars.update( {"model" : "Cruze"}, cruze)
+
+
+

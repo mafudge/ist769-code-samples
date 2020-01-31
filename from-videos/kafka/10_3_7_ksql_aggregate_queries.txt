@@ -1,0 +1,19 @@
+ksql> select count(*) from ATM
+
+# Needs group by --- why? It’s impossible for a steam of data to provide a total. The data is continuous, so it cannot produce a grand total.
+
+ksql> select location, count(*) as transaction_count from ATM group by location;
+
+# we see output, but what are actually seeing here?
+# After more data goes by it should be more more apparent, we are seeing a new row for each message in the stream, 
+# but the output is a running count from the beginning of the query!
+
+# maybe you want to persist this:
+ksql> create stream counts_by_location as select location, count(*) as transaction_count 
+from ATM group by location;
+
+# Invalid result type your SELECT produces a table? Huh?
+
+
+
+

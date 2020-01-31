@@ -1,0 +1,10 @@
+> Consistency
+
+Consistency all
+
+Consistency quorum
+
+Select * from system_utilization;
+
+Consistency one;
+

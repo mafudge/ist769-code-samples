@@ -1,0 +1,5 @@
+grades2 =  FOREACH grades GENERATE course, credits,letter;
+DUMP grades2;
+
+grades3 = FILTER grades2 by letter=='B+';
+DUMP grades3;

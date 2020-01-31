@@ -1,0 +1,21 @@
+$ yarn application -list -appStates FINISHED
+
+# inspect one in detail...
+$ yarn application -status application_1533052372690_0010
+
+ANOTHER WINDOW, RUN A LONG RUNNING JOB!
+$ yarn jar $MREX pi 1 100000000000
+
+BACK TO FIRST WINDOW 
+
+# run a few times to see progress
+$ yarn application -list
+
+# let's kill it 
+$ yarn application -kill application_1533052372690_0010
+
+# view the apps we've killed
+$ yarn application -list -appStates KILLED
+
+# says killed by user
+$ yarn application -status application_1533052372690_0010

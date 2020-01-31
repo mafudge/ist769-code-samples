@@ -1,0 +1,19 @@
+# column projection: Just the names and websites of the vendors
+Db.vendors.find({}, {“name”: 1, “website” :2})
+
+# use the dot notation to access attributes inside other attributes
+db.vendors.find( { "products.department" : "Hardware" }, { "name" : 1, “website” : 2 })
+
+# name, product name and retail price of sporting goods
+db.vendors.find( { "products.department" : "Sporting Goods" }, { "name" : 1,  "products.name" :2, “products.retail_price” : 3 })
+
+# vendors with no website
+db.vendors.find( { website: { $exists : false } }, { "name" : 1, “website” : 2 })
+
+# vendors with websites
+db.vendors.find( { website: { $exists : true } }, { "name" : 1, “website” : 2 })
+
+
+
+
+

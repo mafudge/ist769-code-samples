@@ -1,0 +1,21 @@
+#alter table
+Alter table systems_utilization add applications list<text>;
+
+Update systems_utilizations set applications = ['word', 'excel'] where hostname ='mars' and measured_on '2019-07-19 9:00'
+
+Update systems_utilizations set applications = ['calc', 'word'] where hostname ='mars' and measured_on '2019-07-19 10:00'
+
+Update systems_utilizations set applications = ['calc', 'solitare', 'doom'] where hostname ='mars' and measured_on '2019-07-19 11:00'
+
+Select * from systems_utilization where applications contains 'word' allow filtering;
+
+#set it to null
+Delete applications from systems_utilization where hostname ='mars' and measured_on '2019-07-19 11:00'
+
+Select * from systems_utilizations;
+
+# delete row
+Delete from systems_utilizations where hostname ='mars' and measured_on '2019-07-19 11:00'
+
+ 
+

@@ -1,0 +1,12 @@
+grunt>
+
+store grades_h_sort into 'grades_h_sort' USING PigStorage(',');
+
+# now let's do regular hadoop commands
+
+Ls
+
+Ls grades_h_sort/
+
+Cat grades_h_sort/*
+

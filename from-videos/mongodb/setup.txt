@@ -1,0 +1,9 @@
+Access the mongo client
+
+docker-compose exec mongo mongo -u admin -p pass --authenticationDatabase=admin
+
+Import the example
+
+docker-compose exec mongo mongoimport -u admin -p pass --authenticationDatabase=admin -d demo -c countries --file=europe.json --jsonArray
+
+docker-compose exec mongo mongoimport -u admin -p pass --authenticationDatabase=admin -d demo -c fudgemart_vendors --file=fudgemart_vendors.json --jsonArray

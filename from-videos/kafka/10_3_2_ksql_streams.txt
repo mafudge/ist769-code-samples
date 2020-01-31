@@ -1,0 +1,24 @@
+View schema of ATM again in the consumer
+
+KSQL> CREATE STREAM ATM (id bigint, location varchar, user varchar, timestamp bigint, amount double, status varchar) with (kafka_topic='atm', value_format='json', timestamp='timestamp');
+
+# Explain this statement!!!
+
+# RUN A PROGRAM USING THIS STREAM
+KSQL> select * from ATM;
+
+# Now make another stream which does not use the time stamp.
+KSQL> CREATE STREAM ATM2 (id bigint, location varchar, user varchar, timestamp bigint, amount double, status varchar) with (kafka_topic='atm', value_format='json');
+
+KSQL> select * from ATM2;
+
+# Notice the stream has different timestamps. The data timestamp and the ROWTIME are now different.
+
+KSQL> SHOW TOPICS;
+
+KSQL> SHOW STREAMS;
+
+KSQL> DROP STREAM ATM2;
+
+
+

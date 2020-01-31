@@ -1,0 +1,27 @@
+# let’s make a table
+CREATE table users (name text, age tinyint, primary key (name));
+
+# take a look at it 
+DESCRIBE table users;
+
+# you can drop tables 
+Drop table users;
+
+# now re-create the table
+
+# Some inserts – you can insert the same thing
+Insert into users (name, age) values (‘mike’, 47);
+Insert into users (name, age) values (‘mike’, 47);
+Insert into users (name, age) values (‘mike’, 47);
+
+# but its only there once – There are not integrity constraints!
+Select * from users;
+
+#what happens when you insert the same key with different values? – its like an update!
+Insert into users (name, age) values (‘mike’, 48);
+
+
+NOTES: 
+
+- If just one column is specified that column is both the partition key and the clustering key
+

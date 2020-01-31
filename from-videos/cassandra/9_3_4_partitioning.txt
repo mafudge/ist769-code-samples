@@ -1,0 +1,42 @@
+# create the table
+CREATE TABLE system_utilization (
+	hostname TEXT,
+	os TEXT,	
+	measured_on TIMESTAMP,
+	cpu_pct TINYINT,
+	PRIMARY KEY (hostname, measured_on)
+);
+
+#
+Insert into system_utilization (hostname, os, measured_on, cpu_pct) values ( 'saturn', 'windows', '2018-07-19 09:00', 90);
+Insert into system_utilization (hostname, os, measured_on, cpu_pct) values ( 'saturn', 'windows', '2018-07-19 10:00', 5);
+Insert into system_utilization (hostname, os, measured_on, cpu_pct) values ( 'saturn', 'windows', '2018-07-19 11:00', 10);
+Insert into system_utilization (hostname, os, measured_on, cpu_pct) values ( 'venus', 'osx', '2018-07-19 09:00', 5);
+Insert into system_utilization (hostname, os, measured_on, cpu_pct) values ( 'venus', 'osx', '2018-07-19 10:00', 0);
+Insert into system_utilization (hostname, os, measured_on, cpu_pct) values ( 'venus', 'osx', '2018-07-19 11:00', 15);
+Insert into system_utilization (hostname, os, measured_on, cpu_pct) values ( 'mars', 'windows', '2018-07-19 09:00', 5);
+Insert into system_utilization (hostname, os, measured_on, cpu_pct) values ( 'mars', 'windows', '2018-07-19 10:00', 50);
+Insert into system_utilization (hostname, os, measured_on, cpu_pct) values ( 'mars', 'windows', '2018-07-19 11:00', 75);
+
+
+# you can filter by partition key
+Select * from system_utilization where hostname ='mars';
+
+# you can filter by particion key and cluster key
+Select * from system_utilization where hostname ='mars' and measured_on > '2018-07-19 9:30';
+
+#you cannot filter by non key
+Select * from system_utilization where os = 'windows'
+
+# or even just by cluster key
+Select * from system_utilization where measured_on > '2018-07-19 9:30';
+
+# This is why the partitioning scheme is so important to Cassandra 
+queries This data was partitioned so that each hostname is on its 
+own node in the cluster. So when we omit hostname from the query 
+Cassandra must ask every node for its data. This can be quite time
+ consuming when there are dozens of nodes!
+
+
+
+

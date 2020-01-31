@@ -1,0 +1,22 @@
+PREP
+.\kafka> docker-compose up –d
+
+.\kafka> docker-compose exec broker bash 
+
+TERMINAL WINDOW BROKER
+
+$ kafka-topics --zookeeper zookeeper:2181 --create  --topic atm --replication-factor 1 --partitions 1
+
+
+ANOTHER TERMINAL  - START THE STREAM!!!!
+
+.\kafka> docker-compose exec ksql-datagen bash
+
+# cd /datasets/streaming
+
+# ./kafka-atm-stream.sh
+
+
+TERMINAL WINDOW BROKER
+$kafka-console-consumer --bootstrap-server localhost:9092 –topic atm
+

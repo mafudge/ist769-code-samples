@@ -1,0 +1,17 @@
+$ beeline -u jdbc:hive2://localhost:10000/default -u cloudera -p cloudera –silent=true
+
+WINDOW 1
+beeline>   select count(*) from grades where year=2016;
+
+20 seconds on hive…. With a map-reduce
+Second time to query ….
+Still 20 seconds
+
+WINDOW 2
+$ impala-shell
+
+impala>  select count(*)  from grades_ext where year=2016;
+
+5 seconds on impala
+Second time to query
+Less than a second.

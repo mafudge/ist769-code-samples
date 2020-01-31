@@ -1,0 +1,29 @@
+        TABLE       COLFAMILT
+Create 'customers','address'
+
+     TABLE     ROWKEY  COLFAMILY:COL   VALUE
+Put 'customers', 1, 'address:street', '314 Hinds Hall'
+Put 'customers', 1, 'address:city', 'Syracuse’
+Put 'customers', 1, 'address:state', 'NY'
+
+Put 'customers', 2, 'address:street', '221b Baker Street'
+Put 'customers', 2, 'address:city', 'London'
+Put 'customers', 2, 'address:country', 'UK'
+
+Scan 'customers'
+
+Get 'customers', 1
+
+#not there is no way to get columns from customer 1 and 2. You must get my key first.
+
+ get 'customers',1, ['address:city', ‘address:state]
+
+Alter ‘customers’, ‘name’
+
+Put ‘customers’, 1, ‘name:first’, ‘Mike’
+Put ‘customers’, 1, ‘name:last’, ‘Fudge’
+Put ‘customers’, 1, ‘name:suffix’, ‘Jr’
+
+get 'customers',1, [‘name:first, ‘address:city]
+
+scan 'customers' , { COLUMNS => [ 'address:city'] }

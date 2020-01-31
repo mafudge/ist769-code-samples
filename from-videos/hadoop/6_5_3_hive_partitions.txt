@@ -1,0 +1,17 @@
+beeline> create table grades2 ( term string, course string, credits int, letter string) 
+partitioned by (year int);
+
+beeline> Describe grades2;
+
+beeline> SET hive.exec.dynamic.partition=true;
+beeline> SET hive.exec.dynamic.partition.mode=nonstrict;
+
+beeline> insert overwrite table grades2 partition (year) 
+select term, course, credits, letter, year from grades;
+
+# view the partitions 
+
+!sh hadoop fs -ls /user/hive/warehouse/grades2
+
+# Hive interal table, of course let's look at the content of the parition.
+!sh hadoop fs -cat /user/hive/warehouse/grades2/year=2015/*

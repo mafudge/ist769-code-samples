@@ -1,0 +1,28 @@
+TWO SHELL WINDOWS REQUIRES 3 
+WINDOWS IN [cloudera@quickstart]
+
+FIRST WINDOW
+
+$ cd datasets/tweets
+
+# view the logagent.conf 
+
+# start the tweet stream simulator
+$ ./tweet-stream2.sh
+
+SECOND WINDOW
+
+# let's see the last few tweets
+
+$ tail sample-tweet.stream.psv
+
+# start the flume
+$ flume-ng agent -n agent -f logagent.conf
+
+THIRD WINDOW
+
+# Let's see what's happening in HDFS
+
+$ hadoop fs -ls flumetweets/
+
+$ hadoop fs -cat flumetweets/*

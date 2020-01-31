@@ -1,0 +1,28 @@
+# No Schema
+
+grunt> 
+
+grades = LOAD '/user/cloudera/grades' USING PigStorage('\t');
+DESCRIBE grades;
+DUMP grades;
+a_grades = FILTER grades by $4 == 'A’;
+DUMP a_grades;
+
+# one more time, with schema
+grades = LOAD '/user/cloudera/grades' USING PigStorage('\t') as
+(year:int, term:chararray, course:chararray, credits:int, letter:chararray);
+DESCRIBE grades;
+# now theres a schema!
+
+a_grades= FILTER grades BY letter == ‘A’;
+DUMP a_grades;
+
+
+grade_sample = SAMPLE grades 0.25;
+# different every time
+DUMP grade_sample
+
+grade_5 = LIMIT grades 5;
+DUMP 5;
+
+

@@ -1,0 +1,85 @@
+[
+    {
+        "id": 1,
+        "name": "Bike-Pump",
+        "price": 15.0000,
+        "reviews": [
+            {
+                "Reviewer": {
+                    "Name": "Erin Detyers",
+                    "Email": "edt@mail.com",
+                    "Rating": 5
+                }
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Handlebars",
+        "price": 30.0000,
+        "reviews": [
+            {
+                "Reviewer": {
+                    "Name": "Kent Belevit",
+                    "Rating": 2
+                }
+            },
+            {
+                "Reviewer": {
+                    "Name": "Artie Choke",
+                    "Email": "ack@mail.com",
+                    "Rating": 3
+                }
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Seat",
+        "price": 40.0000
+    }
+]
+
+
+
+[
+    {
+        "id": 1,
+        "name": "Bike-Pump",
+        "price": 15.0000,
+        "Reviews": [
+            {
+                "Reviewer": {
+                    "Name": "Erin Detyers",
+                    "Email": "edt@mail.com",
+                    "Rating": 5
+                }
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Handlebars",
+        "price": 30.0000,
+        "Reviews": [
+            {
+                "Reviewer": {
+                    "Name": "Kent Belevit",
+                    "Rating": 2
+                }
+            },
+            {
+                "Reviewer": {
+                    "Name": "Artie Choke",
+                    "Email": "ack@mail.com",
+                    "Rating": 3
+                }
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Seat",
+        "price": 40.0000
+    }
+]

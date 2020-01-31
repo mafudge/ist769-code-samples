@@ -1,0 +1,10 @@
+# tumbling window – total user withdrawals each hour (make it a minute to see it reset)
+select user, sum(amount) as total_amount, count(*) as transaction_count from atm window tumbling (size 30 seconds) group by user;
+
+# Hopping window – count activity by location every 15 seconds in 30 second windows
+ksql> select location, count(*)  from atm window hopping (size 30 seconds, advance by 15 seconds ) group by location;
+
+# session – anomaly detection. More than 2 errors in a 4 hour window at any location.
+ksql> select location, count(*) as error_count from atm window session (4 hours) where status='ok' group by location having count(*) > 2;
+
+

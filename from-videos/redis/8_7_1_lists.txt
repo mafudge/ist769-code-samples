@@ -1,0 +1,34 @@
+# simple list example 
+Lpush shopping apple
+Lpush shopping pear 
+
+Lrange shopping 0 – 1
+
+# add to the end 
+Rpush shopping orange
+
+Lindex shopping 1
+
+### work queue example. Perfect example when the work to be done cannot happen immediately either 
+
+lpush app:sms "5551234|First TXT Message!“
+lpush app:sms "5551235|First TXT Message!“
+lpush app:sms "5551236|First TXT Message!“
+
+Lrange app:sms 0 -1
+
+# processing
+rpop app:sms
+
+Rpop app:sms (another client)
+
+# here come more messages
+
+lpush app:sms "5551234|Second TXT Message!“
+lpush app:sms "5551235|Second TXT Message!“
+lpush app:sms "5551236|Second TXT Message!“
+
+Lrange app:sms 0 -1
+
+
+Rpop app:sms

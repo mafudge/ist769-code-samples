@@ -1,0 +1,12 @@
+grades_h = foreach grades generate *,  
+( CASE when letter == 'A' OR letter == 'A-' THEN 'high'
+when letter == 'B' OR letter == 'B-' OR letter == 'B+' then 'avg' 
+ELSE 'low' END) as pass;
+
+Describe grades_h;
+
+Dump grades_h;
+
+grades_h_sort = ORDER grades_h BY pass ASC , letter ASC;
+
+dump grades_h_sort;

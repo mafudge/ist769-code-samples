@@ -1,0 +1,15 @@
+# Launch mysql - ONE TERMINAL
+
+$ mysql -u root -p cloudera
+
+mysql> create database grades;
+mysql> use grades;
+mysql> create table grades ( year int, term varchar(10),  \ 
+    course varchar(10), credits int, letter varchar(2) );
+mysql> show tables;
+
+# Let's do the export - OTHER TERMINAL
+$ sqoop export --connect jdbc:mysql://cloudera/tmp --username=root --password=cloudera  --table grades --export-dir /user/cloudera/grades --fields-terminated-by "\t"
+
+# BACK TO mysql
+mysql> select * from grades;

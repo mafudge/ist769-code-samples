@@ -1,0 +1,16 @@
+# see blocks in a file
+$ hdfs fsck /user/cloudera/grades/fall2015.tsv
+
+# one block
+
+# let’s put a larger file but and split it into 512 byte blocks.
+$ hadoop fs -mkdir nyc311
+
+# blocksize too small
+$ hadoop fs –D dfs.blocksize=512 –put sr20160401.csv nyc311/
+
+# use the smallest block size
+$ hadoop fs –D dfs.blocksize=1048576 –put sr20160401.csv nyc311/
+
+# check the number of blocks... should be 4 blocks
+$ hdfs fsck /user/cloudera/nyc311/sr20160401.csv

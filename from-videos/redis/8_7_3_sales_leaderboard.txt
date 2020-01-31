@@ -1,0 +1,31 @@
+# sales leaderboard
+
+# add sales
+zadd app:leaderboard 100 dave 120 sally 90 bill 200 George
+
+# view leaderboard
+zrange app:leaderboard 0 -1
+zrange app:leaderboard 0 -1 withscores
+
+# sally sold 100 more
+zadd app:leaderboard incr 100 sally
+
+#out of last place
+zrange app:leaderboard 0 -1 withscores
+
+# give bill 100
+zincrby app:leaderboard 100 bill
+zrange app:leaderboard 0 -1 withscores
+
+
+#fix the error bill had 240
+Zadd app:leaderboard 240 bill
+zrange app:leaderboard 0 -1 withscores
+
+# get the index of George
+Zrank app:leaderboard George
+
+#get the score of George 
+Zscore app:leaderboard George
+
+

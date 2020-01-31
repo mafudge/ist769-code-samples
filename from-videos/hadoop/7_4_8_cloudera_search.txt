@@ -1,0 +1,3 @@
+Demonstrate the twitter example. from the web UI
+
+http://localhost:8888

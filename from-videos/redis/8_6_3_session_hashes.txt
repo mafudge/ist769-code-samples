@@ -1,0 +1,17 @@
+hset session:mafudge name "Michael Fudge"
+hset session:mafudge credit_limit 500
+hmset session:mafudge email "mafudge@syr.edu" twitter "@mafudge"
+
+# get this user’s email
+hget session:mafudge email
+hmget session:mafudge name email twitter facebook
+
+# check if fields exist
+ hexists session:mafudge email
+
+ hexists session:mafudge last_login
+
+# get all field and values
+Hgetall session:mafudge
+
+

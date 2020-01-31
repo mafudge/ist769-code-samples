@@ -1,0 +1,18 @@
+# Needs allow fildtering
+Select * from system_utilization where os=‘windows’ and hostname=‘saturn’;
+
+# Create the index 
+Create index ix_system_utilization_os ON system_utilization (os);
+
+# now these queries work without the ALLOW FILTERING
+Select * from system_utilization where os=‘windows’ and hostname=‘saturn’;
+
+# You can leave off the hostname and it works,
+ but this is a bad idea since indexes are distributed.
+Select * from system_utilization where os=‘windows’;
+
+# to show the index on the table; It’s attached to it!
+Describe system_utilitzation
+
+# drop the index
+Drop index ix_system_utilization_os

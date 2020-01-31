@@ -1,0 +1,6 @@
+Cqsql> describe keyspaces;
+Cqlsh> create keyspace sysmon with 
+replication = { 'class' : 'SimpleStrategy', 
+'replication_factor' : 3 };
+Cqlsh> Use sysmon;
+

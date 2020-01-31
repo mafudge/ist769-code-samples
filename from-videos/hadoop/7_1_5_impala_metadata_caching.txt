@@ -1,0 +1,30 @@
+
+WINDOW 1 - IMPALA
+$ impala-shell
+
+impala>  select * from grades;
+
+WINDOW 2 - HDFS
+# make new grades
+$ echo -e "2018\tSpring\tIST999\t3\tF" > newgrade.tsv
+$ hadoop fs -put newgrade.tsv grades/
+
+WINDOW 3 - hive…
+
+beeline>   select * from grades where year = 2018;
+# The new grade is there!!!
+
+WINDOW 1 - IMPALA
+
+impala>  select * from grades where year = 2018;
+# The new grade is not there :-(
+
+impala> refresh grades;
+
+impala>  select * from grades where year = 2018;
+# The new data is there!
+
+5 seconds on impala
+Second time to query
+Less than a second.
+

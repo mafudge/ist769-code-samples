@@ -1,0 +1,6 @@
+create table location_counts 
+    as select location, count(*) as transaction_count from ATM group by location
+
+show tables;
+
+show queries;

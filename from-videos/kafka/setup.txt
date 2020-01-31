@@ -1,0 +1,8 @@
+shell access to broker 
+`kafka> docker-compose exec broker /bin/bash`
+
+From the Kafka Broker, list topics:
+`$ kafka-topics --list --zookeeper zookeeper:2181`
+
+Shell Access to KSQL
+`kafka> docker-compose exec ksql-cli ksql http://ksql-server:8088`

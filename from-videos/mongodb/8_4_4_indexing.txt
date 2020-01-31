@@ -1,0 +1,10 @@
+# querying by region!
+db.countries.find( {"subregion" : "Eastern Europe"}).explain("executionStats")
+
+Seaches through all 53 countries…. Blah. (docsExamined)
+
+# Let’s add an index.
+db.countries.createIndex( {subregion:1})
+
+db.countries.find( {"subregion" : "Eastern Europe"}).explain("executionStats")
+db.countries.find( {"subregion" : “Southern Europe"}).explain("executionStats")

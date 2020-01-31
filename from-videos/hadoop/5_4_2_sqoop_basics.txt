@@ -1,0 +1,18 @@
+
+
+$ sqoop list-databases 
+    --connect jdbc:mysql://cloudera 
+    --username=root --password=cloudera
+
+# change to mssql to connect to mssql, must know info to connect
+
+$ sqoop list-tables 
+    --connect jdbc:mysql://cloudera/retail_db 
+    --username=root --password=cloudera
+
+$ sqoop eval --help
+
+$ sqoop eval 
+    --connect jdbc:mysql://cloudera/retail_db 
+    --username=root --password=cloudera
+    --query "select * from products where product_price>200"

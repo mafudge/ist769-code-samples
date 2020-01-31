@@ -1,0 +1,17 @@
+NEED SEPARATE WINDOWS FOR PIG AND HIVE
+# load hive table into pig
+
+grunt> grades2 = load 'grades2' using org.apache.hive.hcatalog.pig.HCatLoader();
+# free schema thanks to hive!!
+grunt> describe grades2; 
+grunt> courses = foreach grades2 generate course;
+grunt> dump courses;
+
+# make the table in Hive
+beeline> create table courses (course string);
+
+#back to pig to store it into hcatalog
+grunt> store courses into 'courses' using org.apache.hive.hcatalog.pig.HCatStorer();
+
+# let's query it in hive
+beeline> select * from courses;

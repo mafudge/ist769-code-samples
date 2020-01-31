@@ -1,0 +1,21 @@
+# user and location as a single column
+Ksql> select concat(user,concat('-', location)) from atm2;
+
+# show the minute of the transaction
+Ksql> select timestamptostring(timestamp, 'mm') from atm;
+
+# separate out the time
+Ksql> select timestamptostring(timestamp, 'hh:mm:ss') from atm;
+
+# or we can use rowtime !!!
+Ksql> select timestamptostring(rowtime, 'mm');
+
+# Transactions in the last 30 seconds of each minute
+Select user, location, amount, timestamptostring(rowtime, 'yyyy-MM-dd hh:mm:ss') where cast( timestamptostring(timestamp,'ss') as BIGINT) > 30;
+
+
+
+
+
+
+

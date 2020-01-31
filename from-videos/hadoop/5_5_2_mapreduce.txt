@@ -1,0 +1,23 @@
+$ export MREX=/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar
+
+# estimate pi
+$ yarn jar $MREX pi 1 100
+
+# can we be more accurate?
+$ yarn jar $MREX pi 1 10000
+
+# make a file 
+$ echo "I love Hadoop you should love Hadoop 
+cleartoo as Hadoop is cool" > msg.txt
+
+# write to HDFS
+$ hadoop fs –put msg.txt /user/cloudera/msg.txt 
+
+# run a wordcount 
+$ yarn jar $MREX wordcount  /user/cloudera/msg.txt /user/cloudera/msg-out
+
+
+# What happened?
+
+$ hadoop fs -ls msg-out
+$ hadoop fs -cat msg-out/*

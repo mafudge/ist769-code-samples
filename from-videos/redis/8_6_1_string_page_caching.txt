@@ -1,0 +1,33 @@
+Set name mike
+Get name
+Set name 'Michael fudge'
+Get name 
+Mset name 'mike' age 47
+del name 
+
+# namespacing is better
+Set user:name mike
+Set user:age 47
+Keys user:*
+
+# Example of how this might be used in page caching
+set page:/about "This is the about page"
+set page:/contact "This is the HTML of the contact us page"
+
+# find all keys in the page: namespace
+Keys page:*
+
+# get two pages at a time
+mget page:/about page:/contact
+
+# help page is not cached
+exists page:/help
+
+# set this page to expire in 10 seconds
+ set page:/help "This is HTML for the help page" EX 10
+
+# get the page – repeat until it expires
+Get page:/help
+
+# explicitly delete a key
+Del  page:/about

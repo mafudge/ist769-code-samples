@@ -1,0 +1,20 @@
+# Create materialized view
+Create materialized view system_utilization_by_os 
+    as select * from system_utilization 
+    where os is not null and hostname is not null and measured_on is not null 
+    primary key (os, hostname, measured_on);
+
+#let’s see the view attached to the table
+Desc system_utilization;
+
+# Can’t filter on the os column without ALLOW FILTERING
+Select * from system_utilization where os = ‘osx’;
+
+#but you can filter by os on the MV since it has a new partition key!
+Select * from system_utilization_by_os where os = ‘osx’;
+
+#insert to show it works!
+Insert into system_utilization (hostname, os, measured_on, cpu_pct) values ( ‘earth’, ‘osx’, ‘2018-07-19 9:00’, 100);
+
+Select from table / and materliized view
+

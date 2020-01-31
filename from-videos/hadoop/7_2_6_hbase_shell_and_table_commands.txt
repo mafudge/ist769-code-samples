@@ -1,0 +1,12 @@
+$ hbase shell
+
+Hbase> Whoami
+Hbase> Version
+Hbase> list
+Hbase> create 'customer', 'name'
+
+Hbase> disable 'customer'
+Hbase> drop 'customer'
+Hbase> c = create 'customer', 'name'
+Hbase> d.disable
+Hbase> d.drop

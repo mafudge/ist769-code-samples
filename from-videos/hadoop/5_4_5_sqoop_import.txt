@@ -1,0 +1,32 @@
+# Import a table runs a map-reduce job
+
+$ sqoop import 
+    --connect jdbc:mysql://cloudera/retail_db 
+    --username=root --password=cloudera
+    --table customers
+    --target-dir /user/cloudera/customers-table
+    --as-textfile 
+
+# check it out
+
+$ hadoop fs -ls
+
+# divided among 4 mappers which is the default
+$ hadoop fs -ls customers-table
+
+# put it back together again
+$ hadoop fs -cat customers-table/*
+
+# split the mappers through state code:
+$ sqoop import \
+    --connect jdbc:mysql://cloudera/retail_db \
+    --username=root --password=cloudera \
+    --query "SELECT * FROM customers where \$CONDITIONS order_by customer_state" \
+    --target-dir /user/cloudera/customers-table-by-state \
+    --as-textfile \
+    --split-by customer_state \
+
+# let's check it out
+$ hadoop fs -ls
+
+$ hadoop fs -ls customers-table-by-state

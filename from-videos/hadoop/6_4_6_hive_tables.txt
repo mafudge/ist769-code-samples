@@ -1,0 +1,38 @@
+beeline> use default;
+beeline> create table grades_int (
+    year int,
+    term string,
+    course string,
+    credits int,
+    letter string
+) row format delimited
+fields terminated by '\t';
+
+beeline> 
+
+beeline> select * from grades_int;
+
+# where does it load the data? Into a hive managed table
+!sh hadoop fs -ls /user/hive/warehouse/grades_int
+
+beeline> drop table grades_int;
+
+# data is gone
+!sh hadoop fs -ls /user/hive/warehouse/grades_int
+
+beeline> create external table grades_ext (
+    year int,
+    term string,
+    course string,
+    credits int,
+    letter string
+) row format delimited
+fields terminated by '\t'
+location '/user/cloudera/grades';
+
+beeline> select * from grades_ext;
+
+beeline> drop table grades_ext;
+
+# data is still there
+!sh hadoop fs -ls /user/cloudera/grades

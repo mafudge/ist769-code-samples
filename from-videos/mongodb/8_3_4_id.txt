@@ -1,0 +1,15 @@
+# added 3 times... _id generated
+
+db.cars.insert( { "make" : "Honda", "model" : "CRV"})
+db.cars.insert( { "make" : "Honda", "model" : "CRV"})
+db.cars.insert( { "make" : "Honda", "model" : "CRV"})
+
+db.cars.find().pretty()
+
+# added once _id defined
+db.cars.insert( { "make" : "Honda", "model" : "Civic"}, “_id” : 2)
+
+# cannot be added again .. same ID.
+db.cars.insert( { "make" : "Honda", "model" : "Does Not Matter"}, “_id” : 2)
+
+db.cars.find().pretty()

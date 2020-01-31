@@ -1,0 +1,25 @@
+# Current Database 
+> db
+
+# Show all databases
+> Show databases
+
+Use a database, does not have to exist
+> Use demo
+
+#show collections 
+> Show collections
+
+# insert some data
+db.cars.insert({ “make”: “Chevy”, “model” : “Cruze” })
+db.cars.insert({ “make”: “Chevy”, “model” : “Traverse” })
+db.cars.insert({ “make”: “Chevy”, “model” : “Trax” })
+# show all documents
+db.cars.find()
+
+#better looking
+Db.cars.find().pretty()
+
+
+
+

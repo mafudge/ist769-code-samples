@@ -1,0 +1,24 @@
+ksql> select * from ATM where location='syracuse’;
+
+# How do we save this so that it runs in the background?
+ksql> create stream syracuse_activity as select * from ATM where location='syracuse’;
+
+# Says stream created and running… Wha?
+ksql> select * from syracuse_activity; 
+
+Ksql> show streams;
+
+# notice it’s a kafka topic
+Ksql> show topics;
+Ksql> show queries;
+
+# Try to terminate
+Ksql> drop stream Syracuse_activity;
+
+# you cannot drop…..
+Ksql> terminate query <name>
+Ksql> drop query Syracuse_activity;
+
+
+
+

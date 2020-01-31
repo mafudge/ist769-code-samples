@@ -1,0 +1,29 @@
+HIVE WINDOWS
+
+beeline>
+
+create external table customers_hbase(key int, street string, city string, 
+    state string, country string) stored by 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+    WITH SERDEPROPERTIES("hbase.columns.mapping" = "address:street,address:city,address:state,address:country") TBLPROPERTIES("hbase.table.name"="customers");
+
+select * from customers_hbase;
+
+
+HBASE WINDOW
+
+#add more data!!!
+
+put 'customers', 3, 'address:street', '1313 Mockingbird lane’
+
+HIVE WINDOW 
+# see the new data!
+
+select * from customers_hbase;
+
+IMPALA WINDOW
+#table not there
+impala> show tables;
+# find the new table
+impala> invalidate metadata
+impala> select * from customers_hbase;
+

@@ -1,0 +1,29 @@
+beeline> use default;
+beeline> create external table grades (
+    year int,
+    term string,
+    course string,
+    credits int,
+    letter string
+) row format delimited
+fields terminated by '\t'
+location '/user/cloudera/grades';
+
+beeline> load data inpath '/user/cloudera/grades/*.tsv' overwrite into table grades;
+
+beeline> Select * from grades where year = 2015;
+
+beeline> select year, term, course, letter from grades where course like ‘IST%’;
+ 
+# Explain why the above needs no map-reduce - its just a map.
+
+beeline> select count(*) from grades where course like ‘IST%’;
+
+# Explain why the above needs a map-reduce 
+
+beeline> select letter, count(letter) as grade_count 
+from grades group by letter order by letter;
+
+beeline> explain select letter, count(letter) as grade_count 
+from grades group by letter order by letter;
+

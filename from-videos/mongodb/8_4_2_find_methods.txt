@@ -1,0 +1,14 @@
+# sort the output 
+db.vendors.find( { "products.department" : "Hardware" }, { "name" : 1 })
+.sort( { "name" : 1} )
+
+db.vendors.find().limit(3)
+
+db.vendors.find().sort( “name” : 1)
+
+# you can combine
+
+db.vendors.find().sort( “name” : 1).limit(4)
+
+
+

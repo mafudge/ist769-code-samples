@@ -1,0 +1,15 @@
+HIVE WINDOW
+
+beeline>
+
+create table grades_hbase (course string, year int, term string, credits int, letter string) STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES ("hbase.columns.mapping"=":key, g:year, g:term, g:credits, g:letter") TBLPROPERTIES("hbase.table.name"="grades");
+
+insert into grades_hbase select course, year, term, credits, letter from grades;
+
+Select * from grades_hbase;
+
+
+HBASE WINDOW - the data is there!!!!
+
+scan 'grades', {  COLUMNS => [ 'g:letter'] }

@@ -1,0 +1,29 @@
+# need to be the cloudera user. In basic Hadoop security the current logged on user has the same permissions in HDFS
+$ su cloudera
+
+# Basic Commands
+$ hdfs dfs –command
+OR
+$ hadoop fs –command
+
+# what is the current directory?
+$ hadoop fs –ls
+
+
+# its /user/cloudera
+
+# make a folder
+$ hadoop fs –mkdir grades
+
+# upload to Hadoop
+$  hadoop fs -put datasets/grades/*.tsv grades/
+
+# copy a file
+$ hadoop fs -cp grades/fall2015.tsv foo.tsv
+
+# combine with cat
+$ hadoop fs –cat grades/*
+
+# make a file with getmerge – a useful command when a reducer 
+# produces more than one fgile
+$ hadoop fs –getmerge grades/* allgrades.tsv

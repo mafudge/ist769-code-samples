@@ -1,0 +1,21 @@
+
+DEMO START
+
+$ kafka-topics --zookeeper zookeeper:2181 --create --topic test --replication-factor 1 --partitions 1
+
+TERMINAL WINDOW 1
+$ kafka-console-producer --broker-list localhost:9092 --topic test
+
+TERMINAL WINDOW 2
+$ kafka-console-consumer --bootstrap-server localhost:9092 --topic test
+
+Let the data stream flow over you!!!! Anything can be placed in the stream!
+
+Stop the consumer and restart it you only see new messages.
+$ kafka-console-consumer --bootstrap-server localhost:9092 --topic test
+
+Stop the consumer and restart it –from-beginning gives you the old messages.
+$ kafka-console-consumer --bootstrap-server localhost:9092 --topic test --from-beginning
+
+
+

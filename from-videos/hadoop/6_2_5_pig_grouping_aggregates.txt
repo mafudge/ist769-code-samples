@@ -1,0 +1,10 @@
+grades = LOAD '/user/cloudera/grades' USING PigStorage('\t') 
+as(year:int, term:chararray, course:chararray, credits:int, letter:chararray);
+letters = GROUP grades by letter;
+Describe letters   #does the field name group annoy you????
+letters_rename = foreach letters GENERATE group as letter, grades;
+describe letters_rename;
+letters_count = FOREACH letters_rename GENERATE letter, 
+    COUNT(grades.letter) as count, 
+    SUM(grades.credits) as total_credits;
+dump letters_count

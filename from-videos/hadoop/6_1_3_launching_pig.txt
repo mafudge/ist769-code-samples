@@ -1,0 +1,26 @@
+$pig 
+
+# too much info
+
+Grunt> quit
+
+# make it less noisy
+
+$  echo "log4j.rootLogger=fatal" > nolog.conf
+
+$ pig -4 nolog.conf
+
+Grunt> fs –mkdir grades
+
+Grunt> fs –put datasets/grades grades/
+
+Grunt> fs –ls grades/
+
+Grunt> A = LOAD ‘grades/’
+
+Grunt> DUMP A;
+
+Grunt> C = LOAD 'customer-table/';
+
+Grunt> DUMP C;
+
